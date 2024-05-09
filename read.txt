@@ -1,0 +1,39 @@
+<Install>
+npm install react-router-dom
+npm install react-bootstrap bootstrap
+( App.js 
+   -> import 'bootstrap/dist/css/bootstrap.min.css';  )
+
+npm install react-pro-sidebar
+npm install react-bootstrap-icons
+
+npm install axios
+npm i @tanstack/react-query
+npm i @tanstack/react-query-devtools
+
+npm install json-server
+
+<.env 파일 생성>
+GENERATE_SOURCEMAP=false
+--> 재실행
+
+<db.json 파일 생성>
+----------------------------------------------------------------
+{
+  "posts": [
+    { "id": "1", "title": "a title", "views": 100 },
+    { "id": "2", "title": "another title", "views": 200 }
+  ],
+  "comments": [
+    { "id": "1", "text": "a comment about post 1", "postId": "1" },
+    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
+--------------------------------------------------------------------
+
+<json 서버 실행>
+terminal 
+ -> json-server --watch db.json --port 3004 (3004 port에서 서버 실행)

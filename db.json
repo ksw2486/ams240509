@@ -1,0 +1,72 @@
+{
+    "entity": [
+        {
+            "name": "AVNTServiceOption",
+            "description": "",
+            "pass": "운영계 배포 완료",
+            "state": "사용",
+            "table": [
+                {
+                    "key": "scheduleLinkService",
+                    "valueType": "int",
+                    "format": "",
+                    "sample": "1",
+                    "description": "External Calendar service 0 : Not Supported 1 : Supported",
+                    "optional": "O"
+                },
+                {
+                    "key": "car2HomeService",
+                    "valueType": "int",
+                    "format": "",
+                    "sample": "1",
+                    "description": "Car2Home service 0 : Not supported 1 : Supported",
+                    "optional": "O"
+                }
+            ]
+        },
+        {
+            "name": "Accuracy",
+            "description": "Accuracy Entity",
+            "table": [
+                {
+                    "key": "hdop",
+                    "valueType": "int",
+                    "format": "Min Value : 0  Max Value: 256",
+                    "sample": "8",
+                    "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
+                    "optional": "M"
+                },
+                {
+                    "key": "pdop",
+                    "valueType": "int",
+                    "format": "Max Value: 256",
+                    "sample": "8",
+                    "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
+                    "optional": "M"
+                }
+            ]
+        },
+        {
+            "name": "AccuracyG2",
+            "description": "Accuracy Entity",
+            "table": [
+                {
+                    "key": "hdop",
+                    "valueType": "int",
+                    "format": "Max Value: 256",
+                    "sample": "8",
+                    "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
+                    "optional": "M"
+                },
+                {
+                    "key": "pdop",
+                    "valueType": "int",
+                    "format": "Max Value: 256",
+                    "sample": "8",
+                    "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
+                    "optional": "M"
+                }
+            ]
+        }
+    ]
+}
