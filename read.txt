@@ -10,8 +10,13 @@ npm install react-bootstrap-icons
 npm install axios
 npm i @tanstack/react-query
 npm i @tanstack/react-query-devtools
-
 npm install json-server
+
+
+//ag-grid installation => package.json 에서 3개 확인
+npm install ag-grid-react
+npm install --save ag-grid-community
+npm install --save ag-grid-enterprise
 
 <.env 파일 생성>
 GENERATE_SOURCEMAP=false

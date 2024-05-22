@@ -1,72 +1,482 @@
 {
-    "entity": [
+  "entity": [
+    {
+      "id": "1",
+      "name": "AVNTServiceOption",
+      "description": "",
+      "pass": "운영계 배포 완료",
+      "state": "사용",
+      "table": [
         {
-            "name": "AVNTServiceOption",
-            "description": "",
-            "pass": "운영계 배포 완료",
-            "state": "사용",
-            "table": [
-                {
-                    "key": "scheduleLinkService",
-                    "valueType": "int",
-                    "format": "",
-                    "sample": "1",
-                    "description": "External Calendar service 0 : Not Supported 1 : Supported",
-                    "optional": "O"
-                },
-                {
-                    "key": "car2HomeService",
-                    "valueType": "int",
-                    "format": "",
-                    "sample": "1",
-                    "description": "Car2Home service 0 : Not supported 1 : Supported",
-                    "optional": "O"
-                }
-            ]
+          "keyName": [
+            "scheduleLinkService"
+          ],
+          "valueType": "int",
+          "format": "",
+          "sample": "1",
+          "description": "External Calendar service 0 : Not Supported 1 : Supported",
+          "optional": "O"
         },
         {
-            "name": "Accuracy",
-            "description": "Accuracy Entity",
-            "table": [
-                {
-                    "key": "hdop",
-                    "valueType": "int",
-                    "format": "Min Value : 0  Max Value: 256",
-                    "sample": "8",
-                    "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
-                    "optional": "M"
-                },
-                {
-                    "key": "pdop",
-                    "valueType": "int",
-                    "format": "Max Value: 256",
-                    "sample": "8",
-                    "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
-                    "optional": "M"
-                }
-            ]
-        },
-        {
-            "name": "AccuracyG2",
-            "description": "Accuracy Entity",
-            "table": [
-                {
-                    "key": "hdop",
-                    "valueType": "int",
-                    "format": "Max Value: 256",
-                    "sample": "8",
-                    "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
-                    "optional": "M"
-                },
-                {
-                    "key": "pdop",
-                    "valueType": "int",
-                    "format": "Max Value: 256",
-                    "sample": "8",
-                    "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
-                    "optional": "M"
-                }
-            ]
+          "keyName": [
+            "car2HomeService"
+          ],
+          "valueType": "int",
+          "format": "",
+          "sample": "1",
+          "description": "Car2Home service 0 : Not supported 1 : Supported",
+          "optional": "O"
         }
-    ]
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Accuracy",
+      "description": "Accuracy Entity",
+      "pass": "운영계 배포 완료",
+      "state": "사용",
+      "table": [
+        {
+          "keyName": [
+            "hdop"
+          ],
+          "valueType": "int",
+          "format": "Min Value : 0  Max Value: 256",
+          "sample": "8",
+          "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "pdop"
+          ],
+          "valueType": "int",
+          "format": "Max Value: 256",
+          "sample": "8",
+          "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "AccuracyG2",
+      "description": "Accuracy Entity",
+      "pass": "운영계 배포 완료",
+      "state": "사용",
+      "table": [
+        {
+          "keyName": [
+            "hdop"
+          ],
+          "valueType": "int",
+          "format": "Max Value: 256",
+          "sample": "8",
+          "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "pdop"
+          ],
+          "valueType": "int",
+          "format": "Max Value: 256",
+          "sample": "8",
+          "description": "≤ 4 gives best accuracy 4 ≤ 8 gives acceptable accuracy ≥ 8 gives poor accuracy",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "ActivationMSG",
+      "description": "Activation Provisioning Message",
+      "pass": "운영계 배포 완료",
+      "state": "사용",
+      "table": [
+        {
+          "keyName": [
+            "provType"
+          ],
+          "valueType": "int",
+          "format": "Enumeration : 0 1 2 3 4 5 6 7 8 9",
+          "sample": "4",
+          "description": "Provisioning Type 0 : Factory Mode 1 : Temporary Pre-Activation Provisioning ",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "provision"
+          ],
+          "valueType": "ProvisioningG2",
+          "format": "",
+          "sample": "",
+          "description": "Provisioning Entity",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "provision",
+            "updataList"
+          ],
+          "valueType": "[TableUpdataG2]",
+          "format": "",
+          "sample": "",
+          "description": "업데이트 정보",
+          "optional": "O"
+        },
+        {
+          "keyName": [
+            "provision",
+            "updataList",
+            "parameter"
+          ],
+          "valueType": "string",
+          "format": "",
+          "sample": "EcoReportType",
+          "description": "파라미터명",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "provision",
+            "updataList",
+            "currentValue"
+          ],
+          "valueType": "string",
+          "format": "",
+          "sample": "0",
+          "description": "This value is only used for maintenance alert items and is the counter for distance traveled. It can only be set to 0 by the service provider.",
+          "optional": "O"
+        },
+        {
+          "keyName": [
+            "provision",
+            "updataList",
+            "value"
+          ],
+          "valueType": "string",
+          "format": "",
+          "sample": "0",
+          "description": "This value is only used for maintenance alert items and is the counter for distance traveled. It can only be set to 0 by the service provider.",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "provision",
+            "updataList",
+            "category"
+          ],
+          "valueType": "string",
+          "format": "",
+          "sample": "MOF",
+          "description": "Category of item",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "provision",
+            "vinUpdate"
+          ],
+          "valueType": "VinUpdateG2",
+          "format": "",
+          "sample": "",
+          "description": "VIN update",
+          "optional": "O"
+        },
+        {
+          "keyName": [
+            "provision",
+            "vinUpdate",
+            "oldVin"
+          ],
+          "valueType": "string",
+          "format": "",
+          "sample": "0",
+          "description": "이전 VIN",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "provision",
+            "vinUpdate",
+            "vin"
+          ],
+          "valueType": "string",
+          "format": "",
+          "sample": "0",
+          "description": "VIN",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "AcnCall",
+      "discript": "AcnCall Entity",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "crashTelemetry"
+          ],
+          "valueType": "",
+          "format": "",
+          "sample": "\"10001000\" , \"00011011\" , \"10100000\" , \"10100000\" , \"01010100\" , \"01100111\" , \"00100011\" , \"10101011\" , \"01100111\" , \"00000011\" , \"10101011\"",
+          "description": "Vehicle’s crash information",
+          "optional": ""
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "AcnCall 2",
+      "discript": "AcnCall Entity2",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "drivingInfo"
+          ],
+          "valueType": "",
+          "format": "",
+          "sample": "",
+          "description": "vehicle’s driving information\t",
+          "optional": "M"
+        }
+      ]
+    }
+  ],
+  "header": [
+    {
+      "key": "MsgID",
+      "format": "",
+      "sample": "135",
+      "description": "단말에서 HTTP 실패후 SMS 전환하여 송신할때의 메시지ID로서, 센터가 해당 메시지의 응답을 SMS 로 줄 때 헤더에 포함",
+      "item": [
+        {
+          "PHONE": "",
+          "TMU": "O",
+          "CC": "",
+          "SBS": "",
+          "ISS": "",
+          "DLW": "",
+          "JV": "",
+          "IMS": "",
+          "DLW2": "",
+          "ISS2": "",
+          "JV2": "",
+          "MOBILE": "",
+          "TMU2": "O",
+          "Baidu": "",
+          "IVR": "",
+          "IMS2": "",
+          "VCRM": "",
+          "Autonavi": "",
+          "IBS": "",
+          "CCVC": "",
+          "LSC": "",
+          "CCAC": "",
+          "CPW": "",
+          "QQAUTH": "",
+          "TIS": "",
+          "TIG": "",
+          "CCSP": "",
+          "DKC": "",
+          "QQserver": "",
+          "TINGBANserver": "",
+          "RDCS": "",
+          "CCSL": "",
+          "DM": "",
+          "SPA": "",
+          "NS": "",
+          "PUSHSERVER": "",
+          "APPSERVER": "",
+          "IBD": "",
+          "PROFILE": "",
+          "CCU": "",
+          "VTWIN": "",
+          "ISSMEDIA": "",
+          "FVV": "",
+          "DMC": "",
+          "VRM": "",
+          "DMSCOMO": ""
+        }
+      ],
+      "id": "4426"
+    },
+    {
+      "key": "Type",
+      "format": "int",
+      "sample": "0",
+      "description": "0 : WGS84  1 : Bessel/n 2 : Coord Shift",
+      "item": [
+        {
+          "PHONE": "",
+          "TMU": "",
+          "CC": "",
+          "SBS": "",
+          "ISS": "",
+          "DLW": "",
+          "JV": "",
+          "IMS": "",
+          "DLW2": "",
+          "ISS2": "O",
+          "JV2": "O",
+          "MOBILE": "O",
+          "TMU2": "O",
+          "Baidu": "",
+          "IVR": "",
+          "IMS2": "",
+          "VCRM": "",
+          "Autonavi": "",
+          "IBS": "",
+          "CCVC": "",
+          "LSC": "",
+          "CCAC": "",
+          "CPW": "",
+          "QQAUTH": "",
+          "TIS": "",
+          "TIG": "",
+          "CCSP": "",
+          "DKC": "",
+          "QQserver": "",
+          "TINGBANserver": "",
+          "RDCS": "",
+          "CCSL": "",
+          "DM": "",
+          "SPA": "",
+          "NS": "",
+          "PUSHSERVER": "",
+          "APPSERVER": "",
+          "IBD": "",
+          "PROFILE": "",
+          "CCU": "",
+          "VTWIN": "",
+          "ISSMEDIA": "",
+          "FVV": "",
+          "DMC": "",
+          "VRM": "",
+          "DMSCOMO": ""
+        }
+      ],
+      "id": "71bb"
+    },
+    {
+      "key": "iccid",
+      "format": "String",
+      "sample": "iccid",
+      "description": "voLTE 관련 값",
+      "item": [
+        {
+          "PHONE": "",
+          "TMU": "",
+          "CC": "",
+          "SBS": "O",
+          "ISS": "",
+          "DLW": "",
+          "JV": "",
+          "IMS": "",
+          "DLW2": "",
+          "ISS2": "O",
+          "JV2": "O",
+          "MOBILE": "",
+          "TMU2": "",
+          "Baidu": "",
+          "IVR": "",
+          "IMS2": "",
+          "VCRM": "",
+          "Autonavi": "",
+          "IBS": "",
+          "CCVC": "",
+          "LSC": "",
+          "CCAC": "",
+          "CPW": "",
+          "QQAUTH": "",
+          "TIS": "",
+          "TIG": "",
+          "CCSP": "",
+          "DKC": "",
+          "QQserver": "",
+          "TINGBANserver": "",
+          "RDCS": "",
+          "CCSL": "",
+          "DM": "",
+          "SPA": "",
+          "NS": "",
+          "PUSHSERVER": "",
+          "APPSERVER": "",
+          "IBD": "",
+          "PROFILE": "",
+          "CCU": "",
+          "VTWIN": "",
+          "ISSMEDIA": "",
+          "FVV": "",
+          "DMC": "",
+          "VRM": "",
+          "DMSCOMO": ""
+        }
+      ],
+      "id": "c399"
+    },
+    {
+      "key": "spaType",
+      "format": "String",
+      "sample": "BL UVO G",
+      "description": "블루링크/유보/제네시스 구분",
+      "item": [
+        {
+          "PHONE": "M",
+          "TMU": "",
+          "CC": "",
+          "SBS": "",
+          "ISS": "",
+          "DLW": "",
+          "JV": "",
+          "IMS": "",
+          "DLW2": "",
+          "ISS2": "",
+          "JV2": "",
+          "MOBILE": "O",
+          "TMU2": "O",
+          "Baidu": "",
+          "IVR": "",
+          "IMS2": "",
+          "VCRM": "",
+          "Autonavi": "",
+          "IBS": "",
+          "CCVC": "O",
+          "LSC": "",
+          "CCAC": "",
+          "CPW": "",
+          "QQAUTH": "",
+          "TIS": "",
+          "TIG": "",
+          "CCSP": "",
+          "DKC": "",
+          "QQserver": "",
+          "TINGBANserver": "",
+          "RDCS": "",
+          "CCSL": "",
+          "DM": "",
+          "SPA": "",
+          "NS": "",
+          "PUSHSERVER": "",
+          "APPSERVER": "",
+          "IBD": "",
+          "PROFILE": "",
+          "CCU": "",
+          "VTWIN": "",
+          "ISSMEDIA": "",
+          "FVV": "",
+          "DMC": "",
+          "VRM": "",
+          "DMSCOMO": ""
+        }
+      ],
+      "id": "bc3f"
+    }
+  ]
 }

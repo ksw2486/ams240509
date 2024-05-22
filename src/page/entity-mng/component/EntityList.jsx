@@ -1,28 +1,28 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React from "react";
-import { ListGroup } from "react-bootstrap";
+import { Button, ListGroup } from "react-bootstrap";
+import { useEntityListQuery } from "../../../hooks/useEntityList";
+import { Link, useNavigate } from "react-router-dom";
+import "./EntityList.style.css";
 
 const EntityList = () => {
-  const fetchEntity = () => {
-    return axios.get("http://localhost:3004/entity");
+  const { data } = useEntityListQuery();
+  const navigate = useNavigate();
+  console.log("dddd", data);
+  const newEntity = () => {
+    navigate("/entity/newEntity")
   };
 
-  const { data } = useQuery({
-    queryKey: ["entity"],
-    queryFn: fetchEntity,
-    select: (data) => {
-      return data.data;
-    },
-  });
-  console.log("dddd", data);
   return (
     <div>
-      <h4>Entity</h4>
+      <div className="add-form">
+        <h4>Entity</h4>
+        <Button onClick={newEntity}>등 록</Button>
+      </div>
+      <br />
       <ListGroup>
         {data?.map((item, idx) => (
           <ListGroup.Item action key={idx}>
-            {item.name}
+            <Link to={`/entity/${idx}`} className="list-group">{item.name}</Link>
           </ListGroup.Item>
         ))}
       </ListGroup>

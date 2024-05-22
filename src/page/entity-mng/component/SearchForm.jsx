@@ -6,7 +6,7 @@ const SearchForm = () => {
     <div>
       <FloatingLabel controlId="floatingSelectGrid" label="배포여부">
         <Form.Select aria-label="Floating label select example">
-          <option>Open this select menu</option>
+          <option></option>
           <option value="1">운영계 배포 대기</option>
           <option value="2">운영계 배포 완료</option>
           <option value="3">검증계 배포 대기</option>
@@ -16,7 +16,7 @@ const SearchForm = () => {
 
       <FloatingLabel controlId="floatingSelectGrid" label="사용여부">
         <Form.Select aria-label="Floating label select example">
-          <option>Open this select menu</option>
+          <option></option>
           <option value="1">미사용</option>
           <option value="2">사용중</option>
         </Form.Select>

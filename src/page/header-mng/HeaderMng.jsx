@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+
+import HeaderTable from "./component/HeaderTable";
 
 const HeaderMng = () => {
   return (
     <div>
-      HeaderMng
+      <HeaderTable />
     </div>
-  )
-}
+  );
+};
 
-export default HeaderMng
+export default HeaderMng;

@@ -2,21 +2,30 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import SearchForm from "./component/SearchForm";
 import EntityList from "./component/EntityList";
-import EntityDetail from "./component/EntityDetail";
+import AgGrid from "./component/AgGrid";
+import EntityKeyInfo from "./component/EntityKeyInfo";
+import TreeAgGrid from "../../study/TreeAgGrid";
+import { Outlet } from "react-router-dom";
+
 
 const EntityMng = () => {
   return (
-    <Container>
+    <Container fluid='ture'>
+      <br/>
       <Row>
         <Col sm="auto">
           <SearchForm />
           <br/>
           <EntityList/>
         </Col>
-        <Col sm="auto">
-          <EntityDetail/>
+        <Col sm="auto">       
+          {/* <AgGrid/> */}
+          {/* <EntityKeyInfo/>
+          <TreeAgGrid/> */}
+          <Outlet/>
         </Col>
       </Row>
+      
     </Container>
   );
 };
