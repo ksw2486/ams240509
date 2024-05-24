@@ -38,7 +38,7 @@ const EntityDetail = () => {
           </tbody>
         </Table>
         <br />
-        <EntityKeyInfo props={id} />
+        <EntityKeyInfo />
       </Container>
       <Outlet />
     </div>

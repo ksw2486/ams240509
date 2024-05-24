@@ -26,7 +26,11 @@ const EntityKeyInfo = () => {
     { field: "valueType" },
     { field: "format" },
     { field: "sample" },
-    { field: "description" },
+    {
+      field: "description",
+      cellStyle: { whiteSpace: "normal" },
+      minWidth: 300,
+    },
     { field: "optional" },
   ]);
 
@@ -55,14 +59,15 @@ const EntityKeyInfo = () => {
     return {
       headerName: "Key",
       minWidth: 200,
+
       cellRendererParams: {
         suppressCount: true,
       },
     };
   }, []);
-  
+
   const getDataPath = useCallback((rowData) => {
-    console.log("getData",[rowData.keyName])
+    console.log("getData", [rowData.keyName]);
     return rowData.keyName;
   }, []);
 
@@ -70,7 +75,7 @@ const EntityKeyInfo = () => {
     <div>
       <br />
       <h4> | Entity Key Infomation</h4>
-      <div className="ag-theme-quartz" style={{ height: 500, width: 900 }}>
+      <div className="ag-theme-quartz" style={{ height: 900, width: 900 }}>
         <AgGridReact
           ref={gridRef}
           rowData={rowData}
@@ -79,8 +84,10 @@ const EntityKeyInfo = () => {
           defaultColDef={defaultColDef}
           autoGroupColumnDef={autoGroupColumnDef}
           treeData={true}
-          groupDefaultExpanded={-1}
+          groupDefaultExpanded={0} // 모든 그룹이 닫힌 상태로 설정
           getDataPath={getDataPath}
+          defaultGroupExpanded={false}
+          autoHeight={true}
         />
       </div>
     </div>

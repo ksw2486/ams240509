@@ -211,9 +211,9 @@
       ]
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "AcnCall",
-      "discript": "AcnCall Entity",
+      "description": "AcnCall Entity",
       "pass": "",
       "state": "",
       "table": [
@@ -230,9 +230,9 @@
       ]
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "AcnCall 2",
-      "discript": "AcnCall Entity2",
+      "description": "AcnCall Entity2",
       "pass": "",
       "state": "",
       "table": [
@@ -245,6 +245,102 @@
           "sample": "",
           "description": "vehicle’s driving information\t",
           "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "BBBBB",
+      "description": "테스트",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "Bbbbbbb"
+          ],
+          "valueType": "",
+          "format": "xadfadfa",
+          "sample": "adfadfa",
+          "description": "adfadfa",
+          "optional": "O"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Cttte300",
+      "description": "test\ntest\ntest 입니다.",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "Aqqeer"
+          ],
+          "valueType": "3",
+          "format": "value 2~9",
+          "sample": "\"20\"",
+          "description": "테스트 테스트\n테스트 테스트\n테스트 테스트\n테스트 테스트",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Azze34",
+      "description": "데이터 테스트 중입니다. \n데이터 테스트 중입니다. \n데이터 테스트 중입니다. ",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "Lquard"
+          ],
+          "valueType": "Double",
+          "format": "value 1 2 3 ",
+          "sample": "\"223\"",
+          "description": "key 테스트 중입니다.\nkey 테스트 중입니다.\nkey 테스트 중입니다.\nkey 테스트 중입니다.",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "Cqqq"
+          ],
+          "valueType": "Integer",
+          "format": "value 3 4 5 ",
+          "sample": "\"10000000\"",
+          "description": "key2 테스트 중입니다.\nkey2 테스트 중입니다.\nkey2 테스트 중입니다.",
+          "optional": "O"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Qeennzd",
+      "description": "기본정보 테스트 중입니다.\n기본정보 테스트 중입니다.\n기본정보 테스트 중입니다.",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "Accce"
+          ],
+          "valueType": "String",
+          "format": "key 정보 테스트 중입니다.\nkey 정보 테스트 중입니다.\nkey 정보 테스트 중입니다.",
+          "sample": "value 3000",
+          "description": "key 정보 discription 입니다.\nkey 정보 discription 입니다.\nkey 정보 discription 입니다.",
+          "optional": "M"
+        },
+        {
+          "keyName": [
+            "Bazdd"
+          ],
+          "valueType": "Object",
+          "format": "key 2정보 테스트\nkey 2정보 테스트",
+          "sample": "\"4000\"",
+          "description": "key 2정보 테스트\nkey 2정보 테스트",
+          "optional": "O"
         }
       ]
     }
@@ -477,6 +573,173 @@
         }
       ],
       "id": "bc3f"
+    }
+  ],
+  "status-Code": [
+    {
+      "id": "1",
+      "description": "HTTP Response Status Code is followed to standard code and guide in HTTP 1.1. (http://tools.ietf.org/html/rfc2616#page-39)",
+      "table": [
+        {
+          "id": "1",
+          "statusCode": 200,
+          "reasonPhrase": "OK",
+          "description": "성공이며 Body 데이터 있음",
+          "http-standard": "O",
+          "PHONE": "",
+          "TMU": "",
+          "CC": "",
+          "SBS": "",
+          "ISS": "",
+          "DLW": "",
+          "JV": "",
+          "IMS": "",
+          "DLW2": "",
+          "ISS2": "",
+          "JV2": "",
+          "MOBILE": "",
+          "TMU2": "",
+          "Baidu": "",
+          "IVR": "",
+          "IMS2": "",
+          "VCRM": "",
+          "Autonavi": "",
+          "IBS": "",
+          "CCVC": "",
+          "LSC": "",
+          "CCAC": "",
+          "CPW": "",
+          "QQAUTH": "",
+          "TIS": "",
+          "TIG": "",
+          "CCSP": "",
+          "DKC": "",
+          "QQserver": "",
+          "TINGBANserver": "",
+          "RDCS": "",
+          "CCSL": "",
+          "DM": "",
+          "SPA": "",
+          "NS": "",
+          "PUSHSERVER": "",
+          "APPSERVER": "",
+          "IBD": "",
+          "PROFILE": "",
+          "CCU": "",
+          "VTWIN": "",
+          "ISSMEDIA": "",
+          "FVV": "",
+          "DMC": "",
+          "VRM": "",
+          "DMSCOMO": ""
+        },
+        {
+          "id": "2",
+          "statusCode": 204,
+          "reasonPhrase": "No Content",
+          "description": "성공이며 Body 데이터 없음",
+          "http-standard": "O",
+          "PHONE": "",
+          "TMU": "",
+          "CC": "",
+          "SBS": "",
+          "ISS": "",
+          "DLW": "",
+          "JV": "",
+          "IMS": "",
+          "DLW2": "",
+          "ISS2": "",
+          "JV2": "",
+          "MOBILE": "",
+          "TMU2": "",
+          "Baidu": "",
+          "IVR": "",
+          "IMS2": "",
+          "VCRM": "",
+          "Autonavi": "",
+          "IBS": "",
+          "CCVC": "",
+          "LSC": "",
+          "CCAC": "",
+          "CPW": "",
+          "QQAUTH": "",
+          "TIS": "",
+          "TIG": "",
+          "CCSP": "",
+          "DKC": "",
+          "QQserver": "",
+          "TINGBANserver": "",
+          "RDCS": "",
+          "CCSL": "",
+          "DM": "",
+          "SPA": "",
+          "NS": "",
+          "PUSHSERVER": "",
+          "APPSERVER": "",
+          "IBD": "",
+          "PROFILE": "",
+          "CCU": "",
+          "VTWIN": "",
+          "ISSMEDIA": "",
+          "FVV": "",
+          "DMC": "",
+          "VRM": "",
+          "DMSCOMO": ""
+        },
+        {
+          "id": "3",
+          "statusCode": 426,
+          "reasonPhrase": "Upgrade Required",
+          "description": "Upgrade request not received",
+          "http-standard": "",
+          "PHONE": "O",
+          "TMU": "",
+          "CC": "",
+          "SBS": "",
+          "ISS": "O",
+          "DLW": "",
+          "JV": "",
+          "IMS": "",
+          "DLW2": "",
+          "ISS2": "O",
+          "JV2": "",
+          "MOBILE": "O",
+          "TMU2": "",
+          "Baidu": "",
+          "IVR": "",
+          "IMS2": "",
+          "VCRM": "",
+          "Autonavi": "",
+          "IBS": "",
+          "CCVC": "",
+          "LSC": "",
+          "CCAC": "",
+          "CPW": "",
+          "QQAUTH": "",
+          "TIS": "",
+          "TIG": "",
+          "CCSP": "",
+          "DKC": "",
+          "QQserver": "",
+          "TINGBANserver": "",
+          "RDCS": "",
+          "CCSL": "",
+          "DM": "",
+          "SPA": "",
+          "NS": "",
+          "PUSHSERVER": "",
+          "APPSERVER": "",
+          "IBD": "",
+          "PROFILE": "",
+          "CCU": "",
+          "VTWIN": "",
+          "ISSMEDIA": "",
+          "FVV": "",
+          "DMC": "",
+          "VRM": "",
+          "DMSCOMO": ""
+        }
+      ]
     }
   ]
 }

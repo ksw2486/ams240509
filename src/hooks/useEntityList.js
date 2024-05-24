@@ -5,11 +5,6 @@ const fetchEntity = () => {
   return axios.get("http://localhost:3004/entity");
 };
 
-// const updataEntity = (newEntityData) => {
-//   // const itemsToUpdate=[{name, description, pass, state, table}]
-//   return axios.post("http://localhost:3004/entity", newEntityData);
-// };
-
 const updataEntity = async (newEntityData) => {
   try {
     const response = await axios.post(
