@@ -9,7 +9,6 @@ import {
   Row,
 } from "react-bootstrap";
 import "./AddBaseInfo.style.css";
-import EntityModal from "./EntityModal";
 import {
   useEntityListQuery,
   useEntityUpdataQuery,
@@ -22,15 +21,17 @@ const AddBaseInfo = () => {
   const [entityName, setEntityName] = useState("");
   const [discriptKor, setDiscriptKor] = useState("");
   const [discriptEng, setDiscriptEng] = useState("");
-  const [keyName, setKeyName] = useState("");
-  const [optional, setOptional] = useState("");
-  const [valueType, setValueType] = useState("");
-  const [format, setFormat] = useState("");
-  const [sample, setSample] = useState("");
-  const [keyDiscriptKor, setKeyDiscriptKor] = useState("");
-  const [keyDiscriptEng, setKeyDiscriptEng] = useState("");
-  // const [entityNameError, setEntityNameError] = useState("");
-  // const [keyNameError, setKeyNameError] = useState("");
+  const [keyForms, setKeyForms] = useState([
+    {
+      keyName: "",
+      optional: "",
+      valueType: "",
+      format: "",
+      sample: "",
+      keyDiscriptKor: "",
+      keyDiscriptEng: "",
+    },
+  ]);
 
   const selectEntity = () => {
     setShow(true);
@@ -55,21 +56,28 @@ const AddBaseInfo = () => {
     console.log("중복확인");
   };
 
-  const keyDuplConfirm = () => {
+  const keyDuplConfirm = (index) => {
     let isDuplicate = false;
     for (let entity of data) {
-      if (entity.table.some((key) => key.keyName.includes(keyName))) {
+      if (
+        entity.table.some((key) =>
+          key.keyName.includes(keyForms[index].keyName)
+        )
+      ) {
         isDuplicate = true;
         break;
       }
     }
     if (isDuplicate) {
       alert("중복된 Key Name입니다. 다시 작성해 주세요.");
-      setKeyName(""); // 인풋창 리셋
+      const newKeyForms = [...keyForms];
+      newKeyForms[index].keyName = ""; // 인풋창 리셋
+      setKeyForms(newKeyForms);
     } else {
       alert("사용 가능한 Key Name입니다.");
     }
   };
+
   const { mutate: addEntity } = useEntityUpdataQuery();
 
   const newEntitySave = (e) => {
@@ -79,54 +87,69 @@ const AddBaseInfo = () => {
       setEntityName(""); // 인풋창 리셋
       return;
     }
-    if (
-      data.some((entity) =>
-        entity.table.some((key) => key.keyName.includes(keyName))
-      )
-    ) {
-      alert("중복된 Key Name입니다. 다시 작성해 주세요.");
-      setKeyName(""); // 인풋창 리셋
-      return;
-    }
     const newEntityData = {
       id: data.length ? Math.max(...data.map((row) => row.id)) + 1 : 1,
       name: entityName,
       discript: discriptKor,
-      // discriptEng: discriptEng,
       pass: "",
       state: "",
-      table: [
-        {
-          keyName: [keyName],
-          valueType: valueType,
-          format: format,
-          sample: sample,
-          description: keyDiscriptKor,
-          optional: optional,
-          // keyDiscriptEng: keyDiscriptEng
-        },
-      ],
+      table: keyForms.map((form) => ({
+        keyName: [form.keyName],
+        valueType: form.valueType,
+        format: form.format,
+        sample: form.sample,
+        description: form.keyDiscriptKor,
+        optional: form.optional,
+      })),
     };
     console.log("newEntityData", newEntityData);
     addEntity(newEntityData);
     setEntityName("");
     setDiscriptKor("");
     setDiscriptEng("");
-    setKeyName("");
-    setOptional("");
-    setValueType("");
-    setFormat("");
-    setSample("");
-    setKeyDiscriptKor("");
-    setKeyDiscriptEng("");
+    setKeyForms([
+      {
+        keyName: "",
+        optional: "",
+        valueType: "",
+        format: "",
+        sample: "",
+        keyDiscriptKor: "",
+        keyDiscriptEng: "",
+      },
+    ]);
     setSelectedEntity("");
-    // setEntityNameError("");
-    // setKeyNameError("");
   };
 
   const newEntityCancel = () => {
     console.log("cancel", "등록취소");
   };
+
+  const addKeyForm = () => {
+    setKeyForms([
+      ...keyForms,
+      {
+        keyName: "",
+        optional: "",
+        valueType: "",
+        format: "",
+        sample: "",
+        keyDiscriptKor: "",
+        keyDiscriptEng: "",
+      },
+    ]);
+  };
+
+  const deleteKeyForm = (index) => {
+    setKeyForms(keyForms.filter((_, i) => i !== index));
+  };
+
+  const updateKeyForm = (index, key, value) => {
+    const newKeyForms = [...keyForms];
+    newKeyForms[index][key] = value;
+    setKeyForms(newKeyForms);
+  };
+
   return (
     <div>
       <Container fluid>
@@ -158,9 +181,7 @@ const AddBaseInfo = () => {
                   as="textarea"
                   placeholder="Discription(KOR)*"
                   value={discriptKor}
-                  onChange={(e) => {
-                    setDiscriptKor(e.target.value);
-                  }}
+                  onChange={(e) => setDiscriptKor(e.target.value)}
                 />
               </Col>
             </Form.Group>
@@ -170,9 +191,7 @@ const AddBaseInfo = () => {
                   as="textarea"
                   placeholder="Discription(ENG)*"
                   value={discriptEng}
-                  onChange={(e) => {
-                    setDiscriptEng(e.target.value);
-                  }}
+                  onChange={(e) => setDiscriptEng(e.target.value)}
                 />
               </Col>
             </Form.Group>
@@ -183,157 +202,179 @@ const AddBaseInfo = () => {
           <h4>◆ Key</h4>
         </Row>
         <br />
-        <Row>
-          <Col sm="10">
-            <Row>
-              <Form className="input">
-                <Form.Group as={Row} className="mb-2" controlId="entityName">
-                  <Col sm="5">
-                    <Form.Control
-                      type="text"
-                      placeholder="Key Name*"
-                      value={keyName}
-                      onChange={(e) => {
-                        setKeyName(e.target.value);
-                      }}
-                    />
-                  </Col>
-                  <Col sm="2">
-                    <Button variant="outline-dark" onClick={keyDuplConfirm}>
-                      중복 확인
-                    </Button>
-                  </Col>
-                  <Col sm="5">
-                    <Row>
-                      <Col sm="4">Optional*</Col>
-                      <Col sm="4">
-                        <Form.Check
-                          type="radio"
-                          label="Optional"
-                          name="O"
-                          checked={optional === "O"}
-                          onChange={() => setOptional("O")}
-                        />
-                      </Col>
-                      <Col sm="4">
-                        <Form.Check
-                          type="radio"
-                          label="Mandatory"
-                          name="M"
-                          checked={optional === "M"}
-                          onChange={() => setOptional("M")}
-                        />
-                      </Col>
-                    </Row>
-                  </Col>
-                </Form.Group>
-              </Form>
-            </Row>
-            <Row>
-              <Form className="input">
-                <Form.Group
-                  as={Row}
-                  className="mb-2"
-                  controlId="valueType"
-                  onChange={(e) => setValueType(e.target.value)}>
-                  <Col sm="5">
-                    <Form.Select>
-                      <option>Value Type*</option>
-                      <option value="1">String</option>
-                      <option value="2">Intger</option>
-                      <option value="3">Double</option>
-                      <option value="4">Pattern</option>
-                      <option value="5">Object</option>
-                    </Form.Select>
-                  </Col>
-                  <Col sm="2">
-                    <Button variant="outline-dark" onClick={selectEntity}>
-                      Entity선택
-                    </Button>
-                  </Col>
-                  <Col sm="5">
-                    <Form.Control
-                      type="text"
-                      placeholder="Entity Name"
-                      disabled
-                      value={selectedEntity}
-                    />
-                  </Col>
-                </Form.Group>
-              </Form>
-            </Row>
-            <Row>
-              <Form className="input">
-                <Form.Group as={Row} className="mb-2" controlId="format">
-                  <Col sm="12">
-                    <Form.Control
-                      as="textarea"
-                      placeholder="Format"
-                      value={format}
-                      onChange={(e) => {
-                        setFormat(e.target.value);
-                      }}
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className="mb-2" controlId="sample">
-                  <Col sm="12">
-                    <Form.Control
-                      type="text"
-                      placeholder="Sample*"
-                      value={sample}
-                      onChange={(e) => {
-                        setSample(e.target.value);
-                      }}
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group
-                  as={Row}
-                  className="mb-2"
-                  controlId="descriptionKor">
-                  <Col sm="12">
-                    <Form.Control
-                      as="textarea"
-                      placeholder="Discription(KOR)*"
-                      value={keyDiscriptKor}
-                      onChange={(e) => {
-                        setKeyDiscriptKor(e.target.value);
-                      }}
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group
-                  as={Row}
-                  className="mb-2"
-                  controlId="descriptionEng">
-                  <Col sm="12">
-                    <Form.Control
-                      as="textarea"
-                      placeholder="Discription(ENG)*"
-                      value={keyDiscriptEng}
-                      onChange={(e) => {
-                        setKeyDiscriptEng(e.target.value);
-                      }}
-                    />
-                  </Col>
-                </Form.Group>
-              </Form>
-            </Row>
-            <Row className="mb-2">
-              <Col>
-                <Button variant="outline-dark" onClick={newEntityCancel}>
-                  취소
-                </Button>
-                <Button variant="outline-dark" onClick={newEntitySave}>
-                  등록
-                </Button>
-              </Col>
-            </Row>
-          </Col>
-          <Col sm="2">
-            <Button className="mb-2">Key 추가</Button>
-            <Button>Key 삭제</Button>
+        {keyForms.map((form, index) => (
+          <Row key={index}>
+            <Col sm="10">
+              <Row>
+                <Form className="input">
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`keyName${index}`}>
+                    <Col sm="5">
+                      <Form.Control
+                        type="text"
+                        placeholder="Key Name*"
+                        value={form.keyName}
+                        onChange={(e) =>
+                          updateKeyForm(index, "keyName", e.target.value)
+                        }
+                      />
+                    </Col>
+                    <Col sm="2">
+                      <Button
+                        variant="outline-dark"
+                        onClick={() => keyDuplConfirm(index)}>
+                        중복 확인
+                      </Button>
+                    </Col>
+                    <Col sm="5">
+                      <Row>
+                        <Col sm="4">Optional*</Col>
+                        <Col sm="4">
+                          <Form.Check
+                            type="radio"
+                            label="Optional"
+                            name={`optional${index}`}
+                            checked={form.optional === "O"}
+                            onChange={() =>
+                              updateKeyForm(index, "optional", "O")
+                            }
+                          />
+                        </Col>
+                        <Col sm="4">
+                          <Form.Check
+                            type="radio"
+                            label="Mandatory"
+                            name={`optional${index}`}
+                            checked={form.optional === "M"}
+                            onChange={() =>
+                              updateKeyForm(index, "optional", "M")
+                            }
+                          />
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Form.Group>
+                </Form>
+              </Row>
+              <Row>
+                <Form className="input">
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`valueType${index}`}>
+                    <Col sm="5">
+                      <Form.Select
+                        value={form.valueType}
+                        onChange={(e) =>
+                          updateKeyForm(index, "valueType", e.target.value)
+                        }>
+                        <option>Value Type*</option>
+                        <option value="String">String</option>
+                        <option value="Integer">Integer</option>
+                        <option value="Double">Double</option>
+                        <option value="Pattern">Pattern</option>
+                        <option value="Object">Object</option>
+                      </Form.Select>
+                    </Col>
+                    <Col sm="2">
+                      <Button variant="outline-dark" onClick={selectEntity}>
+                        Entity선택
+                      </Button>
+                    </Col>
+                    <Col sm="5">
+                      <Form.Control
+                        type="text"
+                        placeholder="Entity Name"
+                        disabled
+                        value={selectedEntity}
+                      />
+                    </Col>
+                  </Form.Group>
+                </Form>
+              </Row>
+              <Row>
+                <Form className="input">
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`format${index}`}>
+                    <Col sm="12">
+                      <Form.Control
+                        as="textarea"
+                        placeholder="Format"
+                        value={form.format}
+                        onChange={(e) =>
+                          updateKeyForm(index, "format", e.target.value)
+                        }
+                      />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`sample${index}`}>
+                    <Col sm="12">
+                      <Form.Control
+                        type="text"
+                        placeholder="Sample*"
+                        value={form.sample}
+                        onChange={(e) =>
+                          updateKeyForm(index, "sample", e.target.value)
+                        }
+                      />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`descriptionKor${index}`}>
+                    <Col sm="12">
+                      <Form.Control
+                        as="textarea"
+                        placeholder="Discription(KOR)*"
+                        value={form.keyDiscriptKor}
+                        onChange={(e) =>
+                          updateKeyForm(index, "keyDiscriptKor", e.target.value)
+                        }
+                      />
+                    </Col>
+                  </Form.Group>
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`descriptionEng${index}`}>
+                    <Col sm="12">
+                      <Form.Control
+                        as="textarea"
+                        placeholder="Discription(ENG)*"
+                        value={form.keyDiscriptEng}
+                        onChange={(e) =>
+                          updateKeyForm(index, "keyDiscriptEng", e.target.value)
+                        }
+                      />
+                    </Col>
+                  </Form.Group>
+                </Form>
+              </Row>
+            </Col>
+            <Col sm="2">
+              <Button className="mb-2" onClick={addKeyForm}>
+                Key 추가
+              </Button>
+              <Button onClick={() => deleteKeyForm(index)}>Key 삭제</Button>
+            </Col>
+          </Row>
+        ))}
+        <Row className="mb-2">
+          <Col>
+            <Button variant="outline-dark" onClick={newEntityCancel}>
+              취소
+            </Button>
+            <Button variant="outline-dark" onClick={newEntitySave}>
+              등록
+            </Button>
           </Col>
         </Row>
       </Container>

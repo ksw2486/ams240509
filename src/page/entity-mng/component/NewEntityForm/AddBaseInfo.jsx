@@ -15,9 +15,12 @@ import {
 } from "../../../../hooks/useEntityList";
 
 const AddBaseInfo = () => {
-  const { data } = useEntityListQuery();
+  const { data, refetch } = useEntityListQuery();
   const [show, setShow] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [selectedEntity, setSelectedEntity] = useState("");
+  const [selectedEntityDescription, setSelectedEntityDescription] =
+    useState("");
   const [entityName, setEntityName] = useState("");
   const [descriptionKor, setDescriptionKor] = useState("");
   const [descriptionEng, setDescriptionEng] = useState("");
@@ -30,6 +33,7 @@ const AddBaseInfo = () => {
       sample: "",
       keyDescriptionKor: "",
       keyDescriptionEng: "",
+      entityDisabled: false,
     },
   ]);
 
@@ -41,8 +45,19 @@ const AddBaseInfo = () => {
     setShow(false);
   };
 
-  const handleSelect = (entityName) => {
+  const handleSelect = (entityName, entityDescription) => {
     setSelectedEntity(entityName);
+    setSelectedEntityDescription(entityDescription);
+  
+    // 엔티티가 선택된 후 버튼을 비활성화
+    const newKeyForms = keyForms.map((form) => {
+      if (form.valueType === "Object") {
+        form.entityDisabled = true;
+      }
+      return form;
+    });
+    setKeyForms(newKeyForms);
+  
     handleClose();
   };
 
@@ -59,7 +74,11 @@ const AddBaseInfo = () => {
   const keyDuplConfirm = (index) => {
     let isDuplicate = false;
     for (let entity of data) {
-      if (entity.table.some((key) => key.keyName.includes(keyForms[index].keyName))) {
+      if (
+        entity.table.some((key) =>
+          key.keyName.includes(keyForms[index].keyName)
+        )
+      ) {
         isDuplicate = true;
         break;
       }
@@ -74,17 +93,19 @@ const AddBaseInfo = () => {
     }
   };
 
-  const { mutate: addEntity } = useEntityUpdataQuery();
+  const { mutate: addEntity } = useEntityUpdataQuery({
+    onSuccess: () => {
+      refetch(); // 데이터 재요청
+    },
+  });
 
-  const newEntitySave = (e) => {
-    e.preventDefault();
-    if (data.some((entity) => entity.name === entityName)) {
-      alert("중복된 Entity Name입니다. 다시 작성해 주세요.");
-      setEntityName(""); // 인풋창 리셋
-      return;
-    }
+  const handleSave = () => {
+    setShowConfirmModal(true);
+  };
+
+  const confirmSave = () => {
     const newEntityData = {
-      id: data.length ? Math.max(...data.map((row) => row.id)) + 1 : 1,
+      id: (data?.length ? String(Math.max(...data.map((row) => row.id)) + 1) : "1"),
       name: entityName,
       description: descriptionKor,
       pass: "",
@@ -92,15 +113,39 @@ const AddBaseInfo = () => {
       table: keyForms.map((form) => ({
         keyName: [form.keyName],
         valueType: form.valueType,
-        format: form.format,
-        sample: form.sample,
-        description: form.keyDescriptionKor,
+        format: form.valueType === "Object" ? "" : form.format,
+        sample: form.valueType === "Object" ? "" : form.sample,
+        description:
+          form.valueType === "Object"
+            ? selectedEntityDescription
+            : form.keyDescriptionKor,
         optional: form.optional,
       })),
     };
-    console.log("newEntityData", newEntityData);
     addEntity(newEntityData);
     resetForm();
+    setShowConfirmModal(false);
+  };
+
+  const getNewEntityData = () => {
+    return {
+      id: (data?.length ? String(Math.max(...data.map((row) => row.id)) + 1) : "1"),
+      name: entityName,
+      description: descriptionKor,
+      pass: "",
+      state: "",
+      table: keyForms.map((form) => ({
+        keyName: [form.keyName],
+        valueType: form.valueType,
+        format: form.valueType === "Object" ? "" : form.format,
+        sample: form.valueType === "Object" ? "" : form.sample,
+        description:
+          form.valueType === "Object"
+            ? selectedEntityDescription
+            : form.keyDescriptionKor,
+        optional: form.optional,
+      })),
+    };
   };
 
   const newEntityCancel = () => {
@@ -120,9 +165,11 @@ const AddBaseInfo = () => {
         sample: "",
         keyDescriptionKor: "",
         keyDescriptionEng: "",
+        entityDisabled: false,
       },
     ]);
     setSelectedEntity("");
+    setSelectedEntityDescription("");
   };
 
   const addKeyForm = () => {
@@ -136,6 +183,7 @@ const AddBaseInfo = () => {
         sample: "",
         keyDescriptionKor: "",
         keyDescriptionEng: "",
+        entityDisabled: false,
       },
     ]);
   };
@@ -149,6 +197,17 @@ const AddBaseInfo = () => {
   const updateKeyForm = (index, key, value) => {
     const newKeyForms = [...keyForms];
     newKeyForms[index][key] = value;
+
+    if (key === "valueType" && value === "Object") {
+      newKeyForms[index].entityDisabled = false; // Object 선택 시 버튼 활성화
+    } else if (key === "valueType") {
+      newKeyForms[index].entityDisabled = true; // 다른 값 선택 시 버튼 비활성화
+      newKeyForms[index].keyDescriptionKor = "";
+      newKeyForms[index].keyDescriptionEng = "";
+      setSelectedEntity("");
+      setSelectedEntityDescription("");
+    }
+
     setKeyForms(newKeyForms);
   };
 
@@ -209,17 +268,24 @@ const AddBaseInfo = () => {
             <Col sm="10">
               <Row>
                 <Form className="input">
-                  <Form.Group as={Row} className="mb-2" controlId={`keyName${index}`}>
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`keyName${index}`}>
                     <Col sm="5">
                       <Form.Control
                         type="text"
                         placeholder="Key Name*"
                         value={form.keyName}
-                        onChange={(e) => updateKeyForm(index, "keyName", e.target.value)}
+                        onChange={(e) =>
+                          updateKeyForm(index, "keyName", e.target.value)
+                        }
                       />
                     </Col>
                     <Col sm="2">
-                      <Button variant="outline-dark" onClick={() => keyDuplConfirm(index)}>
+                      <Button
+                        variant="outline-dark"
+                        onClick={() => keyDuplConfirm(index)}>
                         중복 확인
                       </Button>
                     </Col>
@@ -232,7 +298,9 @@ const AddBaseInfo = () => {
                             label="Optional"
                             name={`optional${index}`}
                             checked={form.optional === "O"}
-                            onChange={() => updateKeyForm(index, "optional", "O")}
+                            onChange={() =>
+                              updateKeyForm(index, "optional", "O")
+                            }
                           />
                         </Col>
                         <Col sm="4">
@@ -241,7 +309,9 @@ const AddBaseInfo = () => {
                             label="Mandatory"
                             name={`optional${index}`}
                             checked={form.optional === "M"}
-                            onChange={() => updateKeyForm(index, "optional", "M")}
+                            onChange={() =>
+                              updateKeyForm(index, "optional", "M")
+                            }
                           />
                         </Col>
                       </Row>
@@ -251,12 +321,16 @@ const AddBaseInfo = () => {
               </Row>
               <Row>
                 <Form className="input">
-                  <Form.Group as={Row} className="mb-2" controlId={`valueType${index}`}>
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`valueType${index}`}>
                     <Col sm="5">
                       <Form.Select
                         value={form.valueType}
-                        onChange={(e) => updateKeyForm(index, "valueType", e.target.value)}
-                      >
+                        onChange={(e) =>
+                          updateKeyForm(index, "valueType", e.target.value)
+                        }>
                         <option>Value Type*</option>
                         <option value="String">String</option>
                         <option value="Integer">Integer</option>
@@ -266,8 +340,11 @@ const AddBaseInfo = () => {
                       </Form.Select>
                     </Col>
                     <Col sm="2">
-                      <Button variant="outline-dark" onClick={selectEntity}>
-                        Entity선택
+                      <Button
+                        variant="outline-dark"
+                        onClick={selectEntity}
+                        disabled={form.entityDisabled}>
+                        Entity 선택
                       </Button>
                     </Col>
                     <Col sm="5">
@@ -283,43 +360,79 @@ const AddBaseInfo = () => {
               </Row>
               <Row>
                 <Form className="input">
-                  <Form.Group as={Row} className="mb-2" controlId={`format${index}`}>
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`format${index}`}>
                     <Col sm="12">
                       <Form.Control
                         as="textarea"
                         placeholder="Format"
                         value={form.format}
-                        onChange={(e) => updateKeyForm(index, "format", e.target.value)}
+                        onChange={(e) =>
+                          updateKeyForm(index, "format", e.target.value)
+                        }
+                        disabled={form.valueType === "Object"}
                       />
                     </Col>
                   </Form.Group>
-                  <Form.Group as={Row} className="mb-2" controlId={`sample${index}`}>
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`sample${index}`}>
                     <Col sm="12">
                       <Form.Control
                         type="text"
                         placeholder="Sample*"
                         value={form.sample}
-                        onChange={(e) => updateKeyForm(index, "sample", e.target.value)}
+                        onChange={(e) =>
+                          updateKeyForm(index, "sample", e.target.value)
+                        }
+                        disabled={form.valueType === "Object"}
                       />
                     </Col>
                   </Form.Group>
-                  <Form.Group as={Row} className="mb-2" controlId={`descriptionKor${index}`}>
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`descriptionKor${index}`}>
                     <Col sm="12">
                       <Form.Control
                         as="textarea"
                         placeholder="Description(KOR)*"
-                        value={form.keyDescriptionKor}
-                        onChange={(e) => updateKeyForm(index, "keyDescriptionKor", e.target.value)}
+                        value={
+                          form.valueType === "Object"
+                            ? selectedEntityDescription
+                            : form.keyDescriptionKor
+                        }
+                        onChange={(e) =>
+                          updateKeyForm(
+                            index,
+                            "keyDescriptionKor",
+                            e.target.value
+                          )
+                        }
+                        disabled={form.valueType === "Object"}
                       />
                     </Col>
                   </Form.Group>
-                  <Form.Group as={Row} className="mb-2" controlId={`descriptionEng${index}`}>
+                  <Form.Group
+                    as={Row}
+                    className="mb-2"
+                    controlId={`descriptionEng${index}`}>
                     <Col sm="12">
                       <Form.Control
                         as="textarea"
                         placeholder="Description(ENG)*"
                         value={form.keyDescriptionEng}
-                        onChange={(e) => updateKeyForm(index, "keyDescriptionEng", e.target.value)}
+                        onChange={(e) =>
+                          updateKeyForm(
+                            index,
+                            "keyDescriptionEng",
+                            e.target.value
+                          )
+                        }
+                        disabled={form.valueType === "Object"}
                       />
                     </Col>
                   </Form.Group>
@@ -330,7 +443,9 @@ const AddBaseInfo = () => {
               <Button className="mb-2" onClick={addKeyForm}>
                 Key 추가
               </Button>
-              <Button onClick={() => deleteKeyForm(index)} disabled={keyForms.length === 1}>
+              <Button
+                onClick={() => deleteKeyForm(index)}
+                disabled={keyForms.length === 1}>
                 Key 삭제
               </Button>
             </Col>
@@ -341,14 +456,14 @@ const AddBaseInfo = () => {
             <Button variant="outline-dark" onClick={newEntityCancel}>
               취소
             </Button>
-            <Button variant="outline-dark" onClick={newEntitySave}>
+            <Button variant="outline-dark" onClick={handleSave}>
               등록
             </Button>
           </Col>
         </Row>
       </Container>
       <div>
-        <Modal show={show} onHide={handleClose}>
+        <Modal size="lg" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Entity List</Modal.Title>
           </Modal.Header>
@@ -358,9 +473,15 @@ const AddBaseInfo = () => {
                 <ListGroup.Item
                   action
                   key={idx}
-                  onClick={() => handleSelect(item.name)}
-                >
-                  {item.name}
+                  onClick={() => handleSelect(item.name, item.description)}>
+                  <Row>
+                    <Col sm="4">
+                      <div>{item.name}</div>
+                    </Col>
+                    <Col sm="8">
+                      <div>{item.description}</div>
+                    </Col>
+                  </Row>
                 </ListGroup.Item>
               ))}
             </ListGroup>
@@ -370,6 +491,27 @@ const AddBaseInfo = () => {
               Close
             </Button>
             <Button variant="primary" onClick={handleClose}>
+              Save
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        <Modal
+          show={showConfirmModal}
+          onHide={() => setShowConfirmModal(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Entity 내용 확인</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <pre>{JSON.stringify(getNewEntityData(), null, 2)}</pre>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setShowConfirmModal(false)}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={confirmSave}>
               Save
             </Button>
           </Modal.Footer>

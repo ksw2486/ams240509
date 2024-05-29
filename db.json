@@ -268,7 +268,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Cttte300",
       "description": "test\ntest\ntest 입니다.",
       "pass": "",
@@ -287,7 +287,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Azze34",
       "description": "데이터 테스트 중입니다. \n데이터 테스트 중입니다. \n데이터 테스트 중입니다. ",
       "pass": "",
@@ -316,7 +316,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Qeennzd",
       "description": "기본정보 테스트 중입니다.\n기본정보 테스트 중입니다.\n기본정보 테스트 중입니다.",
       "pass": "",
@@ -340,6 +340,187 @@
           "format": "key 2정보 테스트\nkey 2정보 테스트",
           "sample": "\"4000\"",
           "description": "key 2정보 테스트\nkey 2정보 테스트",
+          "optional": "O"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "name": "TestItem",
+      "description": "test Entity",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "TestItem2"
+          ],
+          "valueType": "Integer",
+          "format": "value 0 1 2 3 ",
+          "sample": "\"400\"",
+          "description": "test Entity 2",
+          "optional": "O"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "name": "Test 234",
+      "description": "등록 전 화면 표시 테스트 중",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "tett44"
+          ],
+          "valueType": "String",
+          "format": "등록 전 화면 표시 테스트 중",
+          "sample": "\"30000\"",
+          "description": "등록 전 화면 표시 테스트 중",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "name": "testsetes",
+      "description": "adfad",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "ggas"
+          ],
+          "valueType": "String",
+          "format": "dfadf",
+          "sample": "adfa",
+          "description": "adfad",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "name": "Quest234",
+      "description": "Test Quest\nTest Quest\nTest Quest",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "quesset"
+          ],
+          "valueType": "Integer",
+          "format": "value 11231",
+          "sample": "\"5000000\"",
+          "description": "Test Quest\nTest Quest\nTest Quest",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "name": "Antteqa",
+      "description": "adfa",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "adfadfa"
+          ],
+          "valueType": "String",
+          "format": "adfadf",
+          "sample": "adfavc",
+          "description": "zzzdad",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "name": "Save test",
+      "description": "SaveTest",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "ssvvtt"
+          ],
+          "valueType": "String",
+          "format": "value tt",
+          "sample": "\"0021\"",
+          "description": "SaveTest",
+          "optional": "O"
+        },
+        {
+          "keyName": [
+            "qqttva"
+          ],
+          "valueType": "Object",
+          "format": "",
+          "sample": "",
+          "description": "test\ntest\ntest 입니다.",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "name": "HiveDepend",
+      "description": "kkkas",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "bts"
+          ],
+          "valueType": "Object",
+          "format": "",
+          "sample": "",
+          "description": "Activation Provisioning Message",
+          "optional": "O"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "name": "testest",
+      "description": "testetest",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "kkdkt"
+          ],
+          "valueType": "String",
+          "format": "adfa",
+          "sample": "adf",
+          "description": "adg",
+          "optional": "O"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "name": "mnmnmnm",
+      "description": "dsafsdf",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "fasfag"
+          ],
+          "valueType": "String",
+          "format": "adgfad",
+          "sample": "ada",
+          "description": "gdfgd",
           "optional": "O"
         }
       ]
@@ -740,6 +921,116 @@
           "DMSCOMO": ""
         }
       ]
+    }
+  ],
+  "provisioning-table": [
+    {
+      "id": "1",
+      "title": "MOF GEN2 Section (category : MOF)",
+      "table": [
+        {
+          "id": "1",
+          "parameter": "USER.id",
+          "description": "User ID",
+          "factoryValue": "UserID"
+        },
+        {
+          "id": "2",
+          "parameter": "USER.pw",
+          "description": "User password",
+          "factoryValue": "UserPW"
+        },
+        {
+          "id": "3",
+          "parameter": "SMS.size",
+          "description": "SMS size",
+          "factoryValue": "140"
+        },
+        {
+          "id": "4",
+          "parameter": "SMS.headers",
+          "description": "HTTP headers via SMS",
+          "factoryValue": "TID,VIN,From,To,Status,Reason,MsgID"
+        },
+        {
+          "id": "5",
+          "parameter": "SMS.timeout",
+          "description": "SMS timeout (sec)",
+          "factoryValue": "60"
+        },
+        {
+          "id": "6",
+          "parameter": "HTTP.host",
+          "description": "HTTP.host",
+          "factoryValue": "tmsmw.hmgc.com.cn"
+        },
+        {
+          "id": "7",
+          "parameter": "HTTP.port",
+          "description": "TMS port",
+          "factoryValue": "8002"
+        },
+        {
+          "id": "8",
+          "parameter": "HTTP.ssl",
+          "description": "Flag to using HTTPS (true|false)",
+          "factoryValue": "true"
+        },
+        {
+          "id": "9",
+          "parameter": "HTTP.deflate",
+          "description": "HTTP body Compression (true|false)",
+          "factoryValue": "true"
+        },
+        {
+          "id": "10",
+          "parameter": "HTTP.connect.retry",
+          "description": "Connect retry times",
+          "factoryValue": "2"
+        }
+      ]
+    },
+    {
+      "id": " 2",
+      "title": "Configuration Section (category: Common)",
+      "table": [
+        {
+          "id": "1",
+          "parameter": "InCallNum",
+          "description": "CallCenter incoming Normal Call Number – special char and space char are removed when TMS transfer",
+          "factoryValue": "0000000000000"
+        },
+        {
+          "id": "2",
+          "parameter": "SOSCallNum",
+          "description": "CallCenter Emergency Call Number – special char and space char are removed when TMS transfer",
+          "factoryValue": "0000000000000"
+        },
+        {
+          "id": "3",
+          "parameter": "SMSSenderNum",
+          "description": "SMS Server Number – special char and space char are removed when TMS transfer",
+          "factoryValue": "0000000000000"
+        },
+        {
+          "id": "4",
+          "parameter": "SMSMailbox",
+          "description": "SMS address for the sending of SMS messages – TBD Not currently used",
+          "factoryValue": "NULL"
+        }
+      ]
+    }
+  ],
+  "principal": [
+    {
+      "id": "1",
+      "description": "1. 목적\n   본 문서는 2013년 China Gen2 Telematics System 구축사업에서 단말과 미들웨어 및 서비스 포탈간의 통신 연동 방법 및 규격을 기술한다.\n\n2. 용어 정의\n\n - MOF (Mozen Open Framework): 모젠 서비스 미들웨어\n - GEN2 (MOF Generation 2): 차세대 MOF\n - MT(Mobile Terminated): 포탈에서 단말 서비스를 호출하는 것\n - MO(Mobile Oriented): 단말에서 센터 서비스를 호출하는 것\n - WOA (Web Oriented Architecture): HTTP 기반으로 서비스 통신을 하는 아키텍처\n - SOA (Service Oriented Architecture): 서비스 지향적인 아키텍처\n - CRUD (Create, Retrieve, Update, Delete): 생성, 읽기, 수정, 삭제를 의미\n - REST (Representational State Transfer): 서비스 통신을 표현되는 상태의 전이로 보는 아키텍처 스타일\n - JSON (JavaScript Object Notation): key, value 쌍으로 구성되는 간단한 문법 기반의 데이터를 표현하는 스키마\n - PDU (Protocol Data Unit): 프로토콜 데이터 패킷\n - CR (Carriage Return): 커서를 맨 앞으로 옮기는 문자. 아스키 코드로는 ‘\\r’ 에 해당한다.\n - LF (Line Feed): 줄 넘김 제어문자. 아스키 코드로는 ‘\\n’ 에 해당한다. 유닉스 텍스트파일에서의 줄바꿈 문자에 해당한다.\n - CRLF (Carriage Return – Line Feed): “\\r\\n” 쌍을 의미하며 윈도우 텍스트파일에서의 줄바꿈 문자열이 된다. \n   또한, HTTP 프로토콜에서의 줄 구분 문자열에도 사용된다.\n - SP (Space): 공백문자\n - SSL (Secure Socket Layer): 넷스케이프사에서 정의한 소켓 보안으로 TLS 의 기반이 된다.\n - TLS (Transport Layer Security): 전송 계층 보안을 의미하며 SSL 이 표준화되면서 정해짐\n - URI (Uniform Resource Identifier): 특정 리소스에 대한 식별자\n - Deflate: GZIP 압축 알고리즘에서 데이터를 압축하는데 사용되는 알고리즘\n - TMS (Telematics Service System): 텔레매틱스 서비스를 제공하는 센터 시스템\n - ISS (Integrated Service System): TMS 에서 서비스 로직 처리를 담당하는 시스템\n - SBS (Service Bus System): TMS 에서 미들웨어 역할을 하는 시스템으로서 외부와 내부간 이기종 시스템간의 서비스 통신을 연동하고 중계하며 이를 통제한다.\n - CC (Call Center): 중국 콜센터 (95190.com)"
+    }
+  ],
+  "scheme": [
+    {
+      "id": "1",
+      "description": "1.2 HTTP\n 1.2.1 정상 처리\n 단말에서 센터로 HTTP Request 메시지를 TCP/IP 로 보내고, 센터가 보내는 응답을 수신하게 된다.\n\n  <프로토콜 문서상 표기법> \n\n  단말이 TCP/IP 로 보내는 서비스 요청 메시지는 SBS 가 수신하게 되며 보안, 압축, 인증, 검증, 로깅 등의 처리를 한 후 ISS 로 보내주게 된다. ISS 로부터 서비스 응답을 받은 SBS 는 검증, 압축, 로깅 등을 수행한 후 다시 TMU 로 보내주게 된다. "
     }
   ]
 }

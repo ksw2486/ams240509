@@ -6,6 +6,7 @@ import AppNavbar from "./AppNavbar";
 import {
   App,
   Archive,
+  Asterisk,
   Bag,
   Bing,
   DoorOpen,
@@ -56,6 +57,18 @@ const AppLayout = () => {
                   <MenuItem icon={<Sticky />} component={<Link to="/host" />}>
                     Host 관리
                   </MenuItem>
+
+                  <SubMenu label="자료관리" icon={<Asterisk />}>
+                    <MenuItem component={<Link to="/data/provisoning-table" />}>
+                      Provisoning Table
+                    </MenuItem>
+                    <MenuItem component={<Link to="/data/scheme" />}>
+                      Scheme
+                    </MenuItem>
+                    <MenuItem component={<Link to="/data/principal" />}>
+                      Principal
+                    </MenuItem>
+                  </SubMenu>
                 </Menu>
               </Sidebar>
             </div>

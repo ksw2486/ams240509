@@ -13,9 +13,7 @@ const EntityMng = () => {
     <Container fluid='ture'>
       <br/>
       <Row>
-        <Col sm="auto">
-          <SearchForm />
-          <br/>
+        <Col sm="auto">         
           <EntityList/>
         </Col>
         <Col sm="auto">       

@@ -12,6 +12,7 @@ import { useEntityKeyInfoQuery } from "../../../hooks/useEntityList";
 import { GridOptions } from "ag-grid-community";
 import "ag-grid-enterprise";
 import { useParams } from "react-router-dom";
+import "./EntityKeyInfo.style.css";
 
 const EntityKeyInfo = () => {
   const gridRef = useRef();
@@ -22,16 +23,16 @@ const EntityKeyInfo = () => {
 
   const [rowData, setRowData] = useState([]);
   const [colDefs, setColDefs] = useState([
-    // { field: "keyName" },
-    { field: "valueType" },
-    { field: "format" },
-    { field: "sample" },
+    { field: "valueType", flex: 2 },
+    { field: "format", flex: 2 },
+    { field: "sample", flex: 1 },
     {
       field: "description",
       cellStyle: { whiteSpace: "normal" },
       minWidth: 300,
+      flex: 3,
     },
-    { field: "optional" },
+    { field: "optional", flex: 1 },
   ]);
 
   console.log("rowData", rowData);
@@ -52,14 +53,15 @@ const EntityKeyInfo = () => {
       sortable: true,
       editable: true,
       flex: 1,
+      autoHeight: true,
     };
   }, []);
 
   const autoGroupColumnDef = useMemo(() => {
     return {
       headerName: "Key",
-      minWidth: 200,
-
+      // minWidth: 200,
+      flex: 2,
       cellRendererParams: {
         suppressCount: true,
       },
@@ -75,7 +77,7 @@ const EntityKeyInfo = () => {
     <div>
       <br />
       <h4> | Entity Key Infomation</h4>
-      <div className="ag-theme-quartz" style={{ height: 900, width: 900 }}>
+      <div className="ag-theme-quartz " style={{ width: 1200 }}>
         <AgGridReact
           ref={gridRef}
           rowData={rowData}
@@ -88,6 +90,7 @@ const EntityKeyInfo = () => {
           getDataPath={getDataPath}
           defaultGroupExpanded={false}
           autoHeight={true}
+          domLayout='autoHeight'
         />
       </div>
     </div>

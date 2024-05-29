@@ -29,12 +29,9 @@ const StatusMng = () => {
         const columns = Object.keys(data[0])
           .filter(
             (key) =>
-              ![
-                "id",
-                "statusCode",
-                "reasonPhrase",
-                "description",
-              ].includes(key) && data[0][key] !== ""
+              !["id", "statusCode", "reasonPhrase", "description"].includes(
+                key
+              ) && data[0][key] !== ""
           ) // 특정 키 및 빈 값 제외
           .map((column) => ({ field: column })); // 컬럼 정의 생성
         return columns;
@@ -49,12 +46,20 @@ const StatusMng = () => {
       setTables(newTables);
     }
   }, [rowData]);
+
+  // const onGridReady = (params) => {
+  //   const allColumnIds = colDefs.map(colDef => colDef.field);
+  //   params.columnApi.autoSizeColumns(allColumnIds); // 모든 컬럼의 크기를 자동으로 조정
+  // };
+
   return (
     <div>
+      <br />
       <Container>
         <h3>| Status Code</h3>
+        <br />
         <p>{data?.description}</p>
-        <br/>
+        <br />
         <Table>
           <thead>
             <tr>
@@ -90,8 +95,7 @@ const StatusMng = () => {
                               width: 600,
                               marginBottom: 20,
                               // display: expandedRows[item.id] ? "block" : "none",
-                            }}
-                          >
+                            }}>
                             {tables
                               .filter((table) => table.id === item.id)
                               .map((table) => (
@@ -100,17 +104,15 @@ const StatusMng = () => {
                                   rowData={table.tableData}
                                   columnDefs={table.columnDefs}
                                   defaultColDef={{ flex: 1 }}
-                                  onGridReady={(params) => {
-                                    params.api.sizeColumnsToFit();
-                                  }}
+                                  domLayout='autoHeight'
+                                  // onGridReady={onGridReady} // 그리드가 준비되었을 때 호출
                                 />
                               ))}
                           </div>
                           <Button
                             size="sm"
                             variant="outline-dark"
-                            onClick={() => toggleRowDetails(item.id)}
-                          >
+                            onClick={() => toggleRowDetails(item.id)}>
                             Hide Details
                           </Button>
                         </Card>
