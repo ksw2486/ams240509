@@ -28,7 +28,6 @@ const Scheme = () => {
     return text.replace(/\n/g, "<br />");
   };
 
-
   return (
     <div>
       <br />
@@ -37,12 +36,20 @@ const Scheme = () => {
       <div>
         {editing ? (
           <div style={{ width: "1200px" }}>
-            <Button
-              className="mb-2"
-              variant="outline-success"
-              onClick={handleSave}>
-              Save
-            </Button>
+            <div className="d-flex justify-content-end">
+              <Button
+                className="mb-4 me-2"
+                variant="outline-success"
+                onClick={() => setEditing(false)}>
+                취소
+              </Button>
+              <Button
+                className="mb-4 "
+                variant="outline-success"
+                onClick={handleSave}>
+                저장
+              </Button>
+            </div>
             <CKEditor
               editor={ClassicEditor}
               data={data && convertToHTML(data[0].description)}
@@ -51,12 +58,14 @@ const Scheme = () => {
           </div>
         ) : (
           <div style={{ width: "1200px" }}>
-            <Button
-              className="mb-2"
-              variant="outline-success"
-              onClick={handleEdit}>
-              Edit
-            </Button>
+            <div className="d-flex justify-content-end">
+              <Button
+                className="mb-2"
+                variant="outline-success"
+                onClick={handleEdit}>
+                수정
+              </Button>
+            </div>
             <p style={{ whiteSpace: "pre-wrap" }}>
               {data && data[0].description}
             </p>

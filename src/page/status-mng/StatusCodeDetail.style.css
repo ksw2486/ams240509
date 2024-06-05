@@ -1,0 +1,10 @@
+/* StatusList.style.css */
+.text-end .me-2 {
+  margin-right: 0.5rem; /* 버튼 사이에 공간 추가 */
+}
+
+.text-style {
+  white-space: normal;
+  text-align: center; /* 수평 중앙 정렬 */
+  vertical-align: middle; /* 수직 중앙 정렬 */
+}

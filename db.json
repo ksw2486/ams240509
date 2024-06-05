@@ -524,6 +524,54 @@
           "optional": "O"
         }
       ]
+    },
+    {
+      "id": "20",
+      "name": "fghdfgh",
+      "description": "aaaa",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "sfgsh"
+          ],
+          "valueType": "String",
+          "format": "sfg",
+          "sample": "hsgf",
+          "description": "sfs",
+          "optional": "O"
+        },
+        {
+          "keyName": [
+            "dasfa"
+          ],
+          "valueType": "Object",
+          "format": "",
+          "sample": "",
+          "description": "AcnCall Entity2",
+          "optional": "M"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "name": "AQQQdDd",
+      "description": "adfad",
+      "pass": "",
+      "state": "",
+      "table": [
+        {
+          "keyName": [
+            "GGDAa"
+          ],
+          "valueType": "Object",
+          "format": "",
+          "sample": "",
+          "description": "AcnCall Entity",
+          "optional": "O"
+        }
+      ]
     }
   ],
   "header": [
@@ -759,166 +807,221 @@
   "status-Code": [
     {
       "id": "1",
-      "description": "HTTP Response Status Code is followed to standard code and guide in HTTP 1.1. (http://tools.ietf.org/html/rfc2616#page-39)",
-      "table": [
+      "statusCode": 200,
+      "reasonPhraseKr": "OK",
+      "reasonPhraseEng": "OK",
+      "httpStandard": "O",
+      "descriptionKr": "성공이며 Body 데이터 있음",
+      "descriptionEng": "Successful and Body data present",
+      "state": "사용",
+      "firstDate": "24.06.20 00:00:00",
+      "initialRegistration": "홍길동\nA00000",
+      "updateTime": "24/06.21 00:00:00",
+      "updateRegistration": "이효리\nB0000",
+      "history": [
         {
           "id": "1",
-          "statusCode": 200,
-          "reasonPhrase": "OK",
-          "description": "성공이며 Body 데이터 있음",
-          "http-standard": "O",
-          "PHONE": "",
-          "TMU": "",
-          "CC": "",
-          "SBS": "",
-          "ISS": "",
-          "DLW": "",
-          "JV": "",
-          "IMS": "",
-          "DLW2": "",
-          "ISS2": "",
-          "JV2": "",
-          "MOBILE": "",
-          "TMU2": "",
-          "Baidu": "",
-          "IVR": "",
-          "IMS2": "",
-          "VCRM": "",
-          "Autonavi": "",
-          "IBS": "",
-          "CCVC": "",
-          "LSC": "",
-          "CCAC": "",
-          "CPW": "",
-          "QQAUTH": "",
-          "TIS": "",
-          "TIG": "",
-          "CCSP": "",
-          "DKC": "",
-          "QQserver": "",
-          "TINGBANserver": "",
-          "RDCS": "",
-          "CCSL": "",
-          "DM": "",
-          "SPA": "",
-          "NS": "",
-          "PUSHSERVER": "",
-          "APPSERVER": "",
-          "IBD": "",
-          "PROFILE": "",
-          "CCU": "",
-          "VTWIN": "",
-          "ISSMEDIA": "",
-          "FVV": "",
-          "DMC": "",
-          "VRM": "",
-          "DMSCOMO": ""
+          "changedDate": "24.06.20 00:00:00",
+          "content": "Status Code 200 : 최초등록"
         },
         {
           "id": "2",
-          "statusCode": 204,
-          "reasonPhrase": "No Content",
-          "description": "성공이며 Body 데이터 없음",
-          "http-standard": "O",
-          "PHONE": "",
-          "TMU": "",
-          "CC": "",
-          "SBS": "",
-          "ISS": "",
-          "DLW": "",
-          "JV": "",
-          "IMS": "",
-          "DLW2": "",
-          "ISS2": "",
-          "JV2": "",
-          "MOBILE": "",
-          "TMU2": "",
-          "Baidu": "",
-          "IVR": "",
-          "IMS2": "",
-          "VCRM": "",
-          "Autonavi": "",
-          "IBS": "",
-          "CCVC": "",
-          "LSC": "",
-          "CCAC": "",
-          "CPW": "",
-          "QQAUTH": "",
-          "TIS": "",
-          "TIG": "",
-          "CCSP": "",
-          "DKC": "",
-          "QQserver": "",
-          "TINGBANserver": "",
-          "RDCS": "",
-          "CCSL": "",
-          "DM": "",
-          "SPA": "",
-          "NS": "",
-          "PUSHSERVER": "",
-          "APPSERVER": "",
-          "IBD": "",
-          "PROFILE": "",
-          "CCU": "",
-          "VTWIN": "",
-          "ISSMEDIA": "",
-          "FVV": "",
-          "DMC": "",
-          "VRM": "",
-          "DMSCOMO": ""
+          "changedDate": "24.06.21 00:00:00",
+          "content": "Reason Phrase(Kor) 내용수정"
         },
         {
           "id": "3",
-          "statusCode": 426,
-          "reasonPhrase": "Upgrade Required",
-          "description": "Upgrade request not received",
-          "http-standard": "",
-          "PHONE": "O",
-          "TMU": "",
-          "CC": "",
-          "SBS": "",
-          "ISS": "O",
-          "DLW": "",
-          "JV": "",
-          "IMS": "",
-          "DLW2": "",
-          "ISS2": "O",
-          "JV2": "",
-          "MOBILE": "O",
-          "TMU2": "",
-          "Baidu": "",
-          "IVR": "",
-          "IMS2": "",
-          "VCRM": "",
-          "Autonavi": "",
-          "IBS": "",
-          "CCVC": "",
-          "LSC": "",
-          "CCAC": "",
-          "CPW": "",
-          "QQAUTH": "",
-          "TIS": "",
-          "TIG": "",
-          "CCSP": "",
-          "DKC": "",
-          "QQserver": "",
-          "TINGBANserver": "",
-          "RDCS": "",
-          "CCSL": "",
-          "DM": "",
-          "SPA": "",
-          "NS": "",
-          "PUSHSERVER": "",
-          "APPSERVER": "",
-          "IBD": "",
-          "PROFILE": "",
-          "CCU": "",
-          "VTWIN": "",
-          "ISSMEDIA": "",
-          "FVV": "",
-          "DMC": "",
-          "VRM": "",
-          "DMSCOMO": ""
+          "changedDate": "24.06.22 00:00:00",
+          "content": "Reason Phrase(Eng) 내용수정"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "statusCode": 204,
+      "reasonPhraseKr": "OK",
+      "reasonPhraseEng": "OK",
+      "httpStandard": "O",
+      "descriptionKr": "내용없음",
+      "descriptionEng": "No Content",
+      "state": "사용",
+      "firstDate": "24.06.20 00:00:00",
+      "initialRegistration": "홍길동\nA00000",
+      "updateTime": "24/06.21 00:00:00",
+      "updateRegistration": "이효리\nB0000",
+      "history": [
+        {
+          "id": "1",
+          "changedDate": "24.06.20 00:00:00",
+          "content": "Status Code 204 : 최초등록"
+        },
+        {
+          "id": "2",
+          "changedDate": "24.06.21 00:00:00",
+          "content": "Reason Phrase(Kor) 내용수정"
+        },
+        {
+          "id": "3",
+          "changedDate": "24.06.22 00:00:00",
+          "content": "Reason Phrase(Eng) 내용수정"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "statusCode": 426,
+      "reasonPhraseKr": "업그레이드 필요",
+      "reasonPhraseEng": "Upgrade Required",
+      "httpStandard": "O",
+      "descriptionKr": "업그레이드 필요",
+      "descriptionEng": "Upgrade Required",
+      "state": "사용",
+      "firstDate": "24.06.20 00:00:00",
+      "initialRegistration": "홍길동\nA00000",
+      "updateTime": "24/06.21 00:00:00",
+      "updateRegistration": "이효리\nB0000",
+      "history": [
+        {
+          "id": "1",
+          "changedDate": "24.06.20 00:00:00",
+          "content": "Status Code 426 : 최초등록"
+        },
+        {
+          "id": "2",
+          "changedDate": "24.06.21 00:00:00",
+          "content": "Reason Phrase(Kor) 내용수정"
+        },
+        {
+          "id": "3",
+          "changedDate": "24.06.22 00:00:00",
+          "content": "Reason Phrase(Eng) 내용수정"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "statusCode": 517,
+      "reasonPhraseKr": "회로 차단기 열림",
+      "reasonPhraseEng": "Circuit Breaker Open",
+      "httpStandard": "N",
+      "descriptionKr": "회로 차단기 열림",
+      "descriptionEng": "Circuit Breaker Open",
+      "state": "사용",
+      "firstDate": "24.06.20 00:00:00",
+      "initialRegistration": "홍길동\nA00000",
+      "updateTime": "24/06.21 00:00:00",
+      "updateRegistration": "이효리\nB0000",
+      "history": [
+        {
+          "id": "1",
+          "changedDate": "24.06.20 00:00:00",
+          "content": "Status Code 517 : 최초등록"
+        },
+        {
+          "id": "2",
+          "changedDate": "24.06.21 00:00:00",
+          "content": "Reason Phrase(Kor) 내용수정"
+        },
+        {
+          "id": "3",
+          "changedDate": "24.06.22 00:00:00",
+          "content": "Reason Phrase(Eng) 내용수정"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "statusCode": "2323",
+      "reasonPhraseKr": "ㅁㅇㄻ",
+      "reasonPhraseEng": "ㅁㅎㅇㅁ",
+      "descriptionKr": "ㅁㅇㄴ",
+      "descriptionEng": "ㄻㅇㄹ"
+    },
+    {
+      "id": "6",
+      "statusCode": "AQQ",
+      "firstDate": "24.06.04.14:44:45",
+      "reasonPhraseKr": "TEST",
+      "reasonPhraseEng": "TEST",
+      "descriptionKr": "TEST",
+      "descriptionEng": "TEST"
+    },
+    {
+      "id": "7",
+      "statusCode": "9000",
+      "firstDate": "24.06.04.15:13:19",
+      "reasonPhraseKr": "테스트",
+      "reasonPhraseEng": "테스트",
+      "descriptionKr": "테스트",
+      "descriptionEng": "테스트",
+      "history": [
+        {
+          "changedDate": "24.06.04.15:13:19",
+          "content": "Status Code 9000 : 최초등록"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "statusCode": "5432345",
+      "firstDate": "24.06.04.15:15:01",
+      "reasonPhraseKr": "ㅁㅇㄴㄻ",
+      "reasonPhraseEng": "ㅁㅇㅁㄹ",
+      "httpStandard": "N",
+      "descriptionKr": "ㅍㅌㅊㅍ",
+      "descriptionEng": "ㅁㅇㄻㄴㅇ",
+      "history": [
+        {
+          "changedDate": "24.06.04.15:15:01",
+          "content": "Status Code 5432345 : 최초등록"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "statusCode": "88888",
+      "firstDate": "24.06.04.15:36:29",
+      "reasonPhraseKr": "ㅁㅎㅁㅎㅁㅇㄻ",
+      "reasonPhraseEng": "ㅁㅇㄻㄴㅇㄻ",
+      "httpStandard": "N",
+      "descriptionKr": "ㄻㄴㅇㄹㄶㄴㅇㅇ",
+      "descriptionEng": "ㅁㄴㅇㄻㅇㄴㄹ",
+      "history": [
+        {
+          "changedDate": "24.06.04.15:36:29",
+          "content": "Status Code  : 최초등록"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "statusCode": "777777",
+      "firstDate": "24.06.04.15:43:33",
+      "reasonPhraseKr": "ㅁㅎㅁㅇㅁ",
+      "reasonPhraseEng": "ㅁㅎㅇㅁㄴ",
+      "httpStandard": "N",
+      "descriptionKr": "ㅎㅁㄴㅇㅎㅁ",
+      "descriptionEng": "ㅁㅎㅇㅎㅁㄴㅇ",
+      "history": [
+        {
+          "changedDate": "24.06.04.15:43:33",
+          "content": "Status Code 777777 : 최초등록"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "statusCode": "55555",
+      "firstDate": "24.06.04.15:44:21",
+      "reasonPhraseKr": "ㅁㅇㄻㅇ",
+      "reasonPhraseEng": "ㅁㅇㄻ",
+      "httpStandard": "O",
+      "descriptionKr": "ㅇㄻㅇㄹㄹ",
+      "descriptionEng": "ㅁㅇㄻㄴㅇ",
+      "history": [
+        {
+          "changedDate": "24.06.04.15:44:21",
+          "content": "Status Code 55555 : 최초등록"
         }
       ]
     }
@@ -1031,6 +1134,120 @@
     {
       "id": "1",
       "description": "1.2 HTTP\n 1.2.1 정상 처리\n 단말에서 센터로 HTTP Request 메시지를 TCP/IP 로 보내고, 센터가 보내는 응답을 수신하게 된다.\n\n  <프로토콜 문서상 표기법> \n\n  단말이 TCP/IP 로 보내는 서비스 요청 메시지는 SBS 가 수신하게 되며 보안, 압축, 인증, 검증, 로깅 등의 처리를 한 후 ISS 로 보내주게 된다. ISS 로부터 서비스 응답을 받은 SBS 는 검증, 압축, 로깅 등을 수행한 후 다시 TMU 로 보내주게 된다. "
+    }
+  ],
+  "service-message": [
+    {
+      "id": "1",
+      "svmId": "AAT-04",
+      "svmName": "엑세스 토큰 발급 요청",
+      "descriptionKr": "-",
+      "descriptionEng": "-",
+      "distribution": "운영계 배포 완료",
+      "state": "사용",
+      "firstDate": "24.06.28 00:00:00",
+      "initialRegistration": "홍길동 A00000",
+      "updateTime": "24.06.29 00:00:00",
+      "updateRegistration": "이효리 B0000",
+      "history": "없음",
+      "serviceGroup": {
+        "groupId": "AAT",
+        "groupName": "Access Token",
+        "description": "엑세스 토큰 발급 관련"
+      },
+      "host": "VAS",
+      "seviceHub": "O",
+      "scheme": "HTTP",
+      "method": "POST",
+      "uriTopic": "/api/v1/vehicle/oauth/token/fallback",
+      "reqContentInfo": {
+        "reqContType": "Application/x-www-form-urlencodeed",
+        "entityType": "SasTokenReq"
+      },
+      "respContentInfo": {
+        "respContType": "Application/json",
+        "entityType": "AAToken"
+      }
+    },
+    {
+      "id": "2",
+      "svmId": "AAT-05",
+      "svmName": "엑세스 토큰 발급 테스트",
+      "descriptionKr": "-",
+      "descriptionEng": "-",
+      "distribution": "운영계 배포 완료",
+      "state": "사용",
+      "firstDate": "24.06.28 00:00:00",
+      "initialRegistration": "홍길동 A00000",
+      "updateTime": "24.06.29 00:00:00",
+      "updateRegistration": "이효리 B0000",
+      "history": "없음",
+      "serviceGroup": {
+        "groupId": "AAT",
+        "groupName": "Access Token",
+        "description": "엑세스 토큰 발급 관련"
+      },
+      "host": "VAS",
+      "seviceHub": "O",
+      "scheme": "HTTP",
+      "method": "POST",
+      "uriTopic": "/api/v1/vehicle/oauth/token/fallback",
+      "reqContentInfo": {
+        "reqContType": "Application/x-www-form-urlencodeed",
+        "entityType": "SasTokenReq"
+      },
+      "respContentInfo": {
+        "respContType": "Application/json",
+        "entityType": "AAToken"
+      }
+    },
+    {
+      "id": "3",
+      "svmName": "테스트",
+      "descriptionKr": "테스트",
+      "descriptionEng": "Test",
+      "firstDate": "24.06.04.11:00:36",
+      "seviceHub": "O",
+      "scheme": "HTTP+POLL",
+      "method": "GET",
+      "uriTopic": "/api/test/1243",
+      "serviceGroup": {
+        "groupId": "",
+        "groupName": "",
+        "description": ""
+      },
+      "reqContentInfo": {
+        "reqContType": "application/json;charset=UTF-8",
+        "entityType": "Asccc"
+      },
+      "respContentInfo": {
+        "respContType": "Application/x-www-form-urlencoded",
+        "entityType": "Quee"
+      }
+    },
+    {
+      "id": "4",
+      "svmName": "테스트 2",
+      "descriptionKr": "테스트 2",
+      "descriptionEng": "Test 2",
+      "firstDate": "24.06.04.11:20:39",
+      "seviceHub": "O",
+      "scheme": "Web",
+      "method": "PUT",
+      "uriTopic": "/local:3004",
+      "serviceGroup": {
+        "groupId": "",
+        "groupName": "",
+        "description": ""
+      },
+      "reqContentInfo": {
+        "reqContType": "Application/x-www-form-urlencoded",
+        "entityType": "Qeee"
+      },
+      "respContentInfo": {
+        "respContType": "application/json;charset=UTF-8",
+        "entityType": "Accd"
+      }
     }
   ]
 }

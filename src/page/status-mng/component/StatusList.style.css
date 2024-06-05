@@ -1,0 +1,27 @@
+.status-search {  
+  border-radius: 5px;
+  border : 1px solid rgb(192, 192, 192);
+  padding: 2%;  
+}
+
+.text-style {
+    white-space: normal;   
+    text-align: center;  /* 수평 중앙 정렬 */
+    vertical-align: middle;  /* 수직 중앙 정렬 */
+}
+
+.addButton{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.d-flex .me-2 {
+  margin-right: 2rem; /* 아이콘과 텍스트 사이에 공간 추가 */
+}
+
+.custom-tooltip .tooltip-inner {
+  max-width: 1200px; /* 말풍선의 최대 너비 설정 */
+  font-size: 0.9rem; /* 글꼴 크기 설정 */
+  white-space: pre-line; /* 텍스트 내의 줄바꿈을 유지 */
+  text-align: left;
+}

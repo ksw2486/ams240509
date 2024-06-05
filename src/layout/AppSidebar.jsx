@@ -42,7 +42,9 @@ const AppSidebar = () => {
           
           <MenuItem icon={<Sticky />} component={<Link to="/host" />}>
             Host 관리
-          </MenuItem>          
+          </MenuItem>         
+
+
         </Menu>
       </Sidebar>
     </div>

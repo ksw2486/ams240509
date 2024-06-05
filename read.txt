@@ -19,6 +19,8 @@ npm install ag-grid-react
 npm install --save ag-grid-community
 npm install --save ag-grid-enterprise
 
+npm install react-datepicker --save
+
 <.env 파일 생성>
 GENERATE_SOURCEMAP=false
 --> 재실행

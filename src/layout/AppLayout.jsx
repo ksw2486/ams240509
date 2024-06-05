@@ -6,6 +6,7 @@ import AppNavbar from "./AppNavbar";
 import {
   App,
   Archive,
+  AspectRatio,
   Asterisk,
   Bag,
   Bing,
@@ -58,6 +59,10 @@ const AppLayout = () => {
                     Host 관리
                   </MenuItem>
 
+                  <MenuItem icon={<AspectRatio />} component={<Link to="/service-message" />}>
+                    Service Message 관리
+                  </MenuItem>
+
                   <SubMenu label="자료관리" icon={<Asterisk />}>
                     <MenuItem component={<Link to="/data/provisoning-table" />}>
                       Provisoning Table
@@ -69,6 +74,7 @@ const AppLayout = () => {
                       Principal
                     </MenuItem>
                   </SubMenu>
+
                 </Menu>
               </Sidebar>
             </div>

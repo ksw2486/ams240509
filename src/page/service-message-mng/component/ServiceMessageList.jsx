@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Button, ListGroup, FloatingLabel, Form } from "react-bootstrap";
-import { useEntityListQuery } from "../../../hooks/useEntityList";
 import { Link, useNavigate } from "react-router-dom";
-import "./EntityList.style.css";
+import { useServiceMessageListQuery } from "../../../hooks/useServiceMessage";
 
-const EntityList = () => {
-  const { data = [] } = useEntityListQuery();
+const ServiceMessageList = () => {
+  const { data = [] } = useServiceMessageListQuery();
+  // console.log("SVM-list", data && data[0].svmName);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
   const navigate = useNavigate();
-  console.log("dddd", data);
-  const newEntity = () => {
-    navigate("/entity/newEntity");
+  const addSVM = () => {
+    navigate("/service-message/addServiceMessageForm");
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const EntityList = () => {
     } else {
       setFilteredData(
         data?.filter((item) =>
-          item.name.toLowerCase().includes(searchTerm.toLowerCase())
+          item.svmName.toLowerCase().includes(searchTerm.toLowerCase())
         )
       );
     }
@@ -64,19 +64,22 @@ const EntityList = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        {/* <Button variant="outline-success">Search</Button> */}
+        <Button variant="outline-success">Search</Button>
       </Form>
       <br />
       <div className="add-form">
-        <h4>Entity</h4>
-        <Button onClick={newEntity}>Entity 등록</Button>
+        <h4>Service Message</h4>
+        <Button variant="outline-success" onClick={addSVM}>
+          SVM 등록
+        </Button>
       </div>
       <br />
       <ListGroup>
         {filteredData.map((item, idx) => (
           <ListGroup.Item action key={item.id}>
-            <Link to={`/entity/${item.id - 1}`} className="list-group">
-              {item.name}
+            <Link to={`/service-message/${item.id - 1}`} className="list-group">
+              {/* [{item.svmId}] {item.svmName} */}
+              {item.svmName}
             </Link>
           </ListGroup.Item>
         ))}
@@ -85,4 +88,4 @@ const EntityList = () => {
   );
 };
 
-export default EntityList;
+export default ServiceMessageList;

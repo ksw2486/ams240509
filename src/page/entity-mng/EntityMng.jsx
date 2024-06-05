@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import SearchForm from "./component/SearchForm";
 import EntityList from "./component/EntityList";
 import AgGrid from "./component/AgGrid";
 import EntityKeyInfo from "./component/EntityKeyInfo";

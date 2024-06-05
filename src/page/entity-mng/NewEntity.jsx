@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
-import { Outlet } from "react-router-dom";
+import { Container, Row } from "react-bootstrap";
 import AddBaseInfo from "./component/NewEntityForm/AddBaseInfo";
 
 const NewEntity = () => {
